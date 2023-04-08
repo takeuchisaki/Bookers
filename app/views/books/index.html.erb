@@ -1,3 +1,7 @@
+<div class="successfully">
+  <%= flash[:notice] %>
+</div>
+
 <h1>Books</h1>
 <table>
   <thead>
@@ -8,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= @books.each do |book| %>
+    <% @books.each do |book| %>
       <tr>
         <td><%= book.title %></td>
         <td><%= book.body %></td>
@@ -21,27 +25,27 @@
 </table>
 
   <h2>New book</h2>
-  
+
   <% if @book.errors.any? %>
    <%= @book.errors.count %>errors prohibited this book from being saved:
    <ul>
-     <%= @book.errors.full_messages.each do |message| %>
+     <% @book.errors.full_messages.each do |message| %>
      <li><%= message %></li>
     <% end %>
    </ul>
   <% end %>
-  
+
   <%= form_with model: @book do |f| %>
    <div class="find">
      <label for="book_title">Title</label>
-     <div><%= f.text_field :title %></div> 
+     <div><%= f.text_field :title %></div>
    </div>
-   
+
    <div class="find">
      <label for="book_body">Body</label>
      <div><%= f.text_area :body %></div>
    </div>
-   
+
    <div class="actions">
       <%= f.submit 'Create Book' %>
    </div>
